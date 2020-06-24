@@ -1,0 +1,30 @@
+<div class="select-container">
+  <div class="form-group">
+    <label for="selectOption">{{ title }}</label>
+    <select
+      *ngIf="mode === 'region'"
+      #selectRegion
+      [(ngModel)]="selectedRegionOption"
+      class="form-control"
+      id="selectOption"
+      (change)="onSelected(selectRegion.value)"
+    >
+      <option *ngFor="let option of regionOptions$ | async">{{
+        option
+      }}</option>
+    </select>
+
+    <select
+      *ngIf="mode === 'country'"
+      #selectCountry
+      [(ngModel)]="selectedCountryOption"
+      class="form-control"
+      id="selectOption"
+      (change)="onSelected(selectCountry.value)"
+    >
+      <option *ngFor="let option of countryOptions$ | async">{{
+        option.name
+      }}</option>
+    </select>
+  </div>
+</div>

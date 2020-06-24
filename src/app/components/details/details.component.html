@@ -1,0 +1,23 @@
+<div class="container" *ngIf="selectedCountry$ | async as country">
+  <h1>Selected Country Details</h1>
+  <table class="table">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Capital</th>
+      <th scope="col">Population</th>
+      <th scope="col">Currencies</th>
+      <th scope="col">Flag</th>
+    </tr>
+    <tr>
+      <td>{{ country.name }}</td>
+      <td>{{ country.capital }}</td>
+      <td>{{ country.population }}</td>
+      <td>
+        <span *ngFor="let currency of country.currencies">
+          {{ currency.name }} - {{ currency.symbol }}
+        </span>
+      </td>
+      <td><img class="flag-image" [src]="country.flag" /></td>
+    </tr>
+  </table>
+</div>
